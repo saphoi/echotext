@@ -15,8 +15,8 @@ def menuinicial():
     pytesseract.pytesseract.tesseract_cmd = os.getenv("CAMINHO")
     texto = pytesseract.image_to_string(imagem, lang="por")
 
-    return render_template("menuinicial.html")
+    return render_template("menu.html")
 
 @app.route("/sobrenos")
 def sobrenos():
-    return render_template("sobrenos.html")
+    return render_template("sobre.html")
