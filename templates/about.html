@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Sobre Nós{% endblock %}
+
+{% block content %}
+
+<body>
+  <div class="about-info">
+    <h2>Um pouco mais sobre o EchoText...</h2>
+    <p>O projeto do EchoText foi pensado para a cadeira de DCEXT 4 do curso de Engenharia de Software da UPE, campus Garanhuns. As desenvolvedoras envolvidas nesse projeto de acessibilidade foram: Ana Oliveira, Paula Beatriz e Sophia Lamenha. Cada uma das desenvolvedoras colaborou com suas habilidades e jeitinhos que se refletem no cuidado com o design e na leveza da comunicação via Discord para construção do projeto.</p>
+
+    <button id="botao-github">
+      <img src="{{ url_for('static', filename='uploads/FiGithub.svg') }}" alt="">
+      <a href="https://github.com/saphoi/echotext">GitHub do Echotext</a>
+    </button>
+  </div>
+</body>
+{% endblock %}

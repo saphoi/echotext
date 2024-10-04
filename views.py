@@ -3,8 +3,8 @@ from flask import render_template
 
 @app.route("/")
 def menuinicial():
-    return render_template("menu.html")
+    return render_template("index.html")
 
-@app.route("/sobrenos")
+@app.route("/about")
 def sobrenos():
-    return render_template("sobre.html")
+    return render_template("about.html")

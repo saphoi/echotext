@@ -4,10 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Template Base</title>
+  <title>{% block title %}Echotext{% endblock %}</title>
+
+  <!-- Fontes do Google -->
   <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Indie+Flower&display=swap" rel="stylesheet">
+
+  <!-- Ícones Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/static/css/template.css">
+
+  <!-- Importar o arquivo CSS correto usando url_for -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
 </head>
 
 <body>
@@ -15,13 +21,14 @@
   <header>
     <nav class="navbar">
       <div class="logo">
-        <img src="/static/uploads/logo.svg" alt="">
+        <!-- Referenciar o logo corretamente -->
+        <img src="{{ url_for('static', filename='uploads/logo.svg') }}" alt="Logo Echotext">
         <span>EchoText</span>
       </div>
 
       <ul class="links">
-        <li><a href="/templates/menu.html">Página Inicial</a></li>
-        <li><a href="/templates/sobre.html">Sobre Nós</a></li>
+        <li><a href="{{ url_for('index') }}">Página Inicial</a></li>
+        <li><a href="{{ url_for('about') }}">Sobre Nós</a></li>
       </ul>
 
       <div class="toggle-switch">
@@ -37,14 +44,19 @@
       </div>
 
       <div class="dropdown-menu">
-        <li><a href="/templates/menu.html">Página Inicial</a></li>
-        <li><a href="/templates/sobre.html">Sobre Nós</a></li>
+        <li><a href="{{ url_for('index') }}">Página Inicial</a></li>
+        <li><a href="{{ url_for('about') }}">Sobre Nós</a></li>
       </div>
     </nav>
   </header>
 
-  <!-- Link para o arquivo JavaScript externo -->
-  <script src="/static/js/script.js"></script>
+  <!-- Bloco de conteúdo dinâmico -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Importar o script JavaScript corretamente -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
 </html>
