@@ -2,6 +2,8 @@ from app import app
 from flask import render_template
 import os
 from dotenv import load_dotenv
+from gtts import gTTS
+import pygame
 
 load_dotenv()
 
@@ -15,7 +17,16 @@ def menuinicial():
     pytesseract.pytesseract.tesseract_cmd = os.getenv("CAMINHO")
     texto = pytesseract.image_to_string(imagem, lang="por")
 
-    return render_template("menu.html")
+    tts = gTTS(text=texto, lang='pt')
+    audio_file = "audio.mp3"  
+    tts.save(audio_file)  
+
+    pygame.mixer.init()
+    pygame.mixer.music.load(audio_file)
+    pygame.mixer.music.play()
+    #os.system("start audio.mp3")
+
+    return render_template("menu.html", texto=texto)
 
 @app.route("/sobrenos")
 def sobrenos():
