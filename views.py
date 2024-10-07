@@ -1,11 +1,17 @@
-from app import app
-from flask import render_template, request
+# padrão
 import os
+from datetime import datetime
+
+# terceiros
 from dotenv import load_dotenv
+from flask import render_template, request
 from gtts import gTTS
 import pygame
-from PIL import Image
-from datetime import datetime
+
+
+# locais
+from app import app
+
 
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -19,6 +25,7 @@ load_dotenv()
 def index():
     import pytesseract
     import cv2
+
     if request.method == 'POST':
         file = request.files.get('file')
 
