@@ -26,8 +26,8 @@ def menuinicial():
     pygame.mixer.music.play()
     #os.system("start audio.mp3")
 
-    return render_template("menu.html", texto=texto)
+    return render_template("index.html")
 
-@app.route("/sobrenos")
-def sobrenos():
-    return render_template("sobre.html")
+@app.route("/about")
+def about():
+    return render_template("about.html")
