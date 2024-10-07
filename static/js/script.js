@@ -15,3 +15,19 @@ hamburguer.addEventListener('click', function () {
     hamburguerIcon.classList.add('fa-bars');
   }
 });
+
+// SOBRE O CURSOR! NAO MEXEEEEE!
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Cria o elemento da bola
+  const cursor = document.createElement('div');
+  cursor.classList.add('cursor');
+  document.body.appendChild(cursor);
+
+  // Atualiza a posição da bola com base no movimento do mouse
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = `${e.pageX}px`;
+    cursor.style.top = `${e.pageY}px`;
+  });
+});
+
