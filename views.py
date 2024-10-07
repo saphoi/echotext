@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from gtts import gTTS
 import pygame
 from PIL import Image
+from datetime import datetime
 
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -31,7 +32,8 @@ def index():
             texto = pytesseract.image_to_string(imagem, lang="por")
 
             tts = gTTS(text=texto, lang='pt')
-            audio_file = "audio.mp3"  
+            audio_file = os.path.join(app.config['UPLOAD_FOLDER'], f"audio_{datetime.now().strftime('%Y%m%d_%H%M%S')}.mp3")
+
             tts.save(audio_file)  
 
             pygame.mixer.init()
