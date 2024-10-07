@@ -33,7 +33,7 @@ h2 {
 }
 
 span{
-  font-size: 16px;
+  font-size: 24px;
 }
 
 button{
@@ -273,6 +273,8 @@ input:checked + .slider:before {
   background-color: #e6672d;
 }
 
+
+
 /*BOTAO GITHUB ABOUT*/
 
 #botao-github{
@@ -298,10 +300,11 @@ input:checked + .slider:before {
   transform: scale(1.1);
 }
 
-#botao-upload:active {
+#botao-github:active {
   transform: scale(0.90);
-  background-color: #85CDAE;
+  background-color: #498CA0;
 }
+
 
 /* Estilo de alto contraste */
 .high-contrast{
