@@ -5,13 +5,19 @@
 {% block content %}
 
 <body>
+  {{ file }}
   <div class="home-declaracao">
     <h2 id="funcao">Insira o arquivo de texto que deseja ler</h2>
     <p>Faça o upload de um arquivo e o EchoText irá converter todo o conteúdo em áudio, incluindo descrições de imagens (alt text) e o texto principal. Sua privacidade é nossa prioridade, por isso, garantimos que nenhum arquivo será salvo em nosso banco de dados.</p>
   </div>
 
   <div class="conteudo-upload">
-    <button id="botao-upload"><img src="{{ url_for('static', filename='uploads/FiFileText.svg') }}" alt="">Selecionar arquivo</button>
+    <form method="POST">
+      <input type="file" onchange="form.submit()" id="file" name="file" accept="image/png, image/jpg, image/jpeg" style="opacity: 0;" />
+      <label for="file" id="botao-upload" style="color: white;"><img src="{{ url_for('static', filename='uploads/FiFileText.svg') }}" alt="">
+        SELECIONAR ARQUIVO
+      </label>
+    </form>
   </div>
 </body>
 {% endblock %}
