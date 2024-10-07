@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Echotext{% endblock %}</title>
+
+  <!-- Fontes do Google -->
+<link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Roboto+Mono&display=swap" rel="stylesheet">
+
+  <!-- Ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Importar o arquivo CSS correto usando url_for -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='uploads/logo.svg') }}" alt="Logo Echotext">
+        <span>EchoText</span>
+      </div>
+
+      <ul class="links">
+          <li><a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Página Inicial</a></li>
+          <li><a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">Sobre Nós</a></li>
+      </ul>
+
+
+      <div class="toggle-switch">
+        <span>Alto Contraste</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <div class="hamburguer">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <div class="dropdown-menu">
+        <li><a href="{{ url_for('index') }}">Página Inicial</a></li>
+        <li><a href="{{ url_for('about') }}">Sobre Nós</a></li>
+      </div>
+    </nav>
+  </header>
+
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,334 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  cursor: none; /* Esconde o cursor padrão */
+}
+
+.cursor {
+  position: fixed; /* Fixa a posição em relação à viewport */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(133, 205, 174, 0.70);
+  pointer-events: none; /* Para que a bola não interfira em cliques */
+  transform: translate(-50%, -50%); /* Centraliza o círculo em relação ao mouse */
+  z-index: 9999; /* Garante que fique acima de outros elementos */
+}
+
+body {
+  font-family: "Hammersmith One", sans-serif;
+  font-size: 24px;
+  background-color: #F0F7F4;
+}
+
+h2 {
+  font-family: "Roboto Mono", monospace;
+  font-size: 45px;
+  color: #f47b46;
+  text-transform: initial;
+}
+
+span{
+  font-size: 24px;
+}
+
+button{
+  color: white;
+  padding: 15px 30px;
+  border-radius: 20px;
+  font-family: "Hammersmith One", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+/* logo */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 64px;
+  margin-right: 4px;
+}
+
+.logo span {
+  font-size: 40px;
+  font-family: "Indie Flower", cursive;
+  color: #000;
+}
+
+/* ------------------ */
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #090909;
+  font-size: 36px;
+  text-transform: uppercase;
+}
+
+a:hover {
+  color: #f47b46;
+}
+
+.active {
+    font-weight: bold;
+    color: #f47b46;
+    border-bottom: 2px solid #ff6600;
+}
+
+/* HEADER */
+
+header {
+  position: relative;
+  margin: 0px 0px 80px 0px;
+}
+
+.navbar {
+  width: 100vw;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative; /* Permite que o box-shadow funcione corretamente */
+
+  /* Efeito drop-shadow */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra da navbar */
+
+  /* Bordas para simular o efeito de vidro */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Borda branca semi-transparente */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+
+.navbar .links {
+  display: flex;
+  gap: 56px;
+}
+
+.navbar .hamburguer {
+  font-size: 36px;
+  cursor: pointer;
+  display: none;
+  position: relative;
+  z-index: 2; /* Garantir que o ícone tenha prioridade sobre o dropdown */
+}
+
+/* Toggle switch for high contrast */
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.toggle-switch span {
+  text-transform: capitalize;
+  font-size: 28px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #ff6600;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+
+/* DROPDOWN */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 100%; /* Coloca o dropdown logo abaixo da navbar */
+  width: 300px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1; /* Garantir que o dropdown fique abaixo do ícone */
+}
+
+.dropdown-menu.open {
+  display: block;
+  height: auto;
+}
+
+.dropdown-menu li {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #090909;
+}
+
+.dropdown-menu li:hover {
+  background: rgba(0, 0, 0, 0.1); 
+  color: white;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 992px) {
+
+  .navbar .links, .toggle-switch {
+    display: none;
+  }
+
+  .navbar .hamburguer {
+    display: block;
+  }
+
+  .dropdown-menu {
+    display: none;
+  }
+
+  .dropdown-menu.open {
+    display: block;
+  }
+}
+
+
+/*INDEX*/
+.home-declaracao, .conteudo-upload, .about-info{
+  margin: 20px;
+  padding: 0 50px 0px 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-content: space-evenly;
+  gap: 16px;
+}
+
+/*BOTAO UPLOAD INDEX*/
+
+#botao-upload{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  border: 20px;
+  margin: 30px auto 0 auto;
+  width: 500px;
+  border-radius: 20px;
+  background: #f47b46;
+  height: 120px;
+  font-size: 30px;
+  transition: transform 0.3s ease;
+}
+
+#botao-upload:hover {
+  transform: scale(1.1);
+}
+
+#botao-upload:active {
+  transform: scale(0.90);
+  background-color: #e6672d;
+}
+
+
+
+/*BOTAO GITHUB ABOUT*/
+
+#botao-github{
+  background-color:#A8D5E2;
+  text-align: center;
+  padding: 20px;
+  border: 20px;
+  margin: 30px;
+  width: 500px;
+  height: 90px;
+  transition: transform 0.3s ease;
+  }
+
+#botao-github img{
+  margin-right: 8px;
+}
+#botao-github a {
+  color: black;
+  text-decoration: none;
+}
+
+#botao-github:hover {
+  transform: scale(1.1);
+}
+
+#botao-github:active {
+  transform: scale(0.90);
+  background-color: #498CA0;
+}
+
+
+/* Estilo de alto contraste */
+.high-contrast{
+    background-color: #090909;
+    color: #FFF;
+}
+.high-contrast .navbar{
+  border: 0;
+  border-radius: 0;
+}
+.high-contrast .logo span {
+    color: #fff;
+}
+
+.high-contrast a {
+    color: #ff6600;
+}
+
+/* Media query para telas pequenas (smartphones) */
+@media (max-width: 600px) {
+  #botao-upload {
+    width: 90%; /* Botão ocupará quase toda a largura da tela */
+    padding: 15px;
+  }
+
+
+}
