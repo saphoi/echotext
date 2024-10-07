@@ -4,6 +4,13 @@ import os
 from dotenv import load_dotenv
 from gtts import gTTS
 import pygame
+from PIL import Image
+
+UPLOAD_FOLDER = 'uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
 load_dotenv()
 
@@ -12,22 +19,28 @@ def index():
     import pytesseract
     import cv2
     if request.method == 'POST':
-        file = request.form['file']
-        imagem = cv2.imread(file)
+        file = request.files.get('file')
 
-        pytesseract.pytesseract.tesseract_cmd = os.getenv("CAMINHO")
-        texto = pytesseract.image_to_string(imagem, lang="por")
+        if file and file.filename:
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+            file.save(filepath)
 
-        tts = gTTS(text=texto, lang='pt')
-        audio_file = "audio.mp3"  
-        tts.save(audio_file)  
+            imagem = cv2.imread(filepath)
 
-        pygame.mixer.init()
-        pygame.mixer.music.load(audio_file)
-        pygame.mixer.music.play()
-        #os.system("start audio.mp3")
+            pytesseract.pytesseract.tesseract_cmd = os.getenv("CAMINHO")
+            texto = pytesseract.image_to_string(imagem, lang="por")
 
-        return render_template("index.html")
+            tts = gTTS(text=texto, lang='pt')
+            audio_file = "audio.mp3"  
+            tts.save(audio_file)  
+
+            pygame.mixer.init()
+            pygame.mixer.music.load(audio_file)
+            pygame.mixer.music.play()
+
+            return render_template("index.html")
+        else:
+             return render_template("index.html", error="Nenhum arquivo foi selecionado")
     else:
         return render_template("index.html")
 
