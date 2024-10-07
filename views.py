@@ -8,7 +8,7 @@ import pygame
 load_dotenv()
 
 @app.route("/")
-def menuinicial():
+def index():
     import pytesseract
     import cv2
 
