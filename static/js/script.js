@@ -1,3 +1,4 @@
+// SOBRE AS BARRINHAS DE ACESSIBILIDADE
 const hamburguer = document.querySelector('.hamburguer');
 const hamburguerIcon = document.querySelector('.hamburguer i');
 const dropDownMenu = document.querySelector('.dropdown-menu');
@@ -41,7 +42,7 @@ const body = document.body;
 toggleSwitch.addEventListener('change', () => {
     body.classList.toggle('high-contrast'); // Alterna a classe
 
-    // Você pode adicionar aqui um armazenamento local se quiser que a configuração persista
+
     if (body.classList.contains('high-contrast')) {
         localStorage.setItem('high-contrast', 'enabled');
     } else {
