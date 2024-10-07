@@ -26,9 +26,10 @@
       </div>
 
       <ul class="links">
-        <li><a href="{{ url_for('index') }}">Página Inicial</a></li>
-        <li><a href="{{ url_for('about') }}">Sobre Nós</a></li>
+          <li><a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Página Inicial</a></li>
+          <li><a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">Sobre Nós</a></li>
       </ul>
+
 
       <div class="toggle-switch">
         <span>Alto Contraste</span>

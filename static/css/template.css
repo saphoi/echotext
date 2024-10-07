@@ -27,7 +27,7 @@ body {
 
 h2 {
   font-family: "Roboto Mono", monospace;
-  font-size: 50px;
+  font-size: 45px;
   color: #f47b46;
   text-transform: initial;
 }
@@ -76,6 +76,12 @@ a {
 
 a:hover {
   color: #f47b46;
+}
+
+.active {
+    font-weight: bold;
+    color: #f47b46;
+    border-bottom: 2px solid #ff6600;
 }
 
 /* HEADER */
@@ -295,6 +301,23 @@ input:checked + .slider:before {
 #botao-upload:active {
   transform: scale(0.90);
   background-color: #85CDAE;
+}
+
+/* Estilo de alto contraste */
+.high-contrast{
+    background-color: #090909;
+    color: #FFF;
+}
+.high-contrast .navbar{
+  border: 0;
+  border-radius: 0;
+}
+.high-contrast .logo span {
+    color: #fff;
+}
+
+.high-contrast a {
+    color: #ff6600;
 }
 
 /* Media query para telas pequenas (smartphones) */
