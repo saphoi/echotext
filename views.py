@@ -7,7 +7,7 @@ import pygame
 
 load_dotenv()
 
-@app.route("/")
+@app.route("/", endpoint='index')
 def index():
     import pytesseract
     import cv2
