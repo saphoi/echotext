@@ -1,3 +1,18 @@
+/* Importa a fonte OpenDyslexic */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('fonts/OpenDyslexicMono-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Fonte em Negrito */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('fonts/OpenDyslexic3-Bold.ttf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -20,13 +35,14 @@ html {
 }
 
 body {
-  font-family: "Hammersmith One", sans-serif;
+  font-family: 'OpenDyslexic', "Hammersmith One", sans-serif;
   font-size: 24px;
   background-color: #F0F7F4;
 }
 
 h2 {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'OpenDyslexic', "Roboto Mono", monospace;
+  font-weight: bold;
   font-size: 45px;
   color: #f47b46;
   text-transform: initial;
