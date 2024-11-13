@@ -1,14 +1,14 @@
 /* Importa a fonte OpenDyslexic */
 @font-face {
   font-family: 'OpenDyslexic';
-  src: url('fonts/OpenDyslexicMono-Regular.otf') format('opentype');
+  src: url('static/fonts/OpenDyslexicMono-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 /* Fonte em Negrito */
 @font-face {
   font-family: 'OpenDyslexic';
-  src: url('fonts/OpenDyslexic3-Bold.ttf') format('opentype');
+  src: url('static/fonts/OpenDyslexic3-Bold.ttf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
