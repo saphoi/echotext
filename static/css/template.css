@@ -50,6 +50,22 @@ body {
   background-repeat: no-repeat; /* Evita repetição da textura */
   background-attachment: fixed; /* Mantém a textura fixa durante o scroll */
 
+  overflow-x: hidden; /* Impede o scroll lateral */
+
+}
+
+/* Sobreposição para escurecer e suavizar a textura em alto contraste */
+body.high-contrast::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%; /* Garante que a pseudo-classe cubra toda a altura da tela */
+  background-color: rgba(0, 0, 0, 0.5); /* Sobreposição preta */
+  z-index: -1; /* Coloca a sobreposição atrás do conteúdo */
+  backdrop-filter: brightness(0.7); /* Suaviza a textura */
+  /*pointer-events: none;*/
 }
 
 h2 {
