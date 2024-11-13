@@ -1,9 +1,9 @@
 /* Importa a fonte OpenDyslexic */
 @font-face {
   font-family: 'OpenDyslexicMono';
-  src: url('static/fonts/OpenDyslexicMono-Regular.otf') format('opentype'),
-      url('static/fonts/OpenFormatWoff/OpenDyslexicMono-Regular.woff') format('woff'),
-      url('static/fonts/OpenFormatWoff/OpenDyslexicMono-Regular.woff2') format('woff2');
+  src: url('../fonts/OpenDyslexicMono-Regular.otf') format('opentype'),
+      url('../fonts/OpenDyslexicMono-Regular.woff') format('woff'),
+      url('../fonts/OpenDyslexicMono-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -11,9 +11,9 @@
 /* Fonte em Negrito */
 @font-face {
   font-family: 'OpenDyslexic3';
-  src: url('static/fonts/OpenDyslexic3-Bold.ttf') format('opentype'),
-        url('static/fonts/OpenFormatWoff/OpenDyslexicThree-Bold.woff') format('woff'),
-        url('static/fonts/OpenFormatWoff/OpenDyslexicThree-Bold.woff2') format('woff2');
+  src: url('../fonts/OpenDyslexic3-Bold.ttf') format('opentype'),
+        url('../fonts/OpenDyslexicThree-Bold.woff') format('woff'),
+        url('../fonts/OpenDyslexicThree-Bold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -41,15 +41,15 @@ html {
 }
 
 body {
-  font-family: 'OpenDyslexic', "Hammersmith One", sans-serif;
-  font-size: 24px;
+  font-family: 'OpenDyslexicMono', "Hammersmith One", sans-serif;
+  font-size: 20px;
   background-color: #F0F7F4;
 }
 
 h2 {
-  font-family: 'OpenDyslexic', "Roboto Mono", monospace;
+  font-family: 'OpenDyslexic3', "Roboto Mono", monospace;
   font-weight: bold;
-  font-size: 45px;
+  font-size: 35px;
   color: #f47b46;
   text-transform: initial;
 }
@@ -134,7 +134,11 @@ header {
 
 .navbar .links {
   display: flex;
-  gap: 56px;
+  gap: 46px;
+}
+
+.navbar .links a {
+  letter-spacing: 1px;
 }
 
 .navbar .hamburguer {
@@ -153,7 +157,7 @@ header {
 }
 .toggle-switch span {
   text-transform: capitalize;
-  font-size: 28px;
+  font-size: 20px;
 }
 
 .switch {
@@ -329,6 +333,11 @@ input:checked + .slider:before {
 
 
 /* Estilo de alto contraste */
+
+.high-contrast * {
+  transition: background-color 0.3s, color 0.3s;
+}
+
 .high-contrast{
     background-color: #090909;
     color: #FFF;
