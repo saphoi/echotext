@@ -328,7 +328,37 @@ input:checked + .slider:before {
   #botao-upload {
     width: 90%; /* Botão ocupará quase toda a largura da tela */
     padding: 15px;
-  }
+  }}
 
+ /* Estilo para os botões de controle de áudio */
+#audio-controls button {
+  color: white;
+  padding: 15px 30px;
+  border-radius: 20px;
+  font-family: "Hammersmith One", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #f47b46; /* Mesma cor de fundo que o botão de upload */
+  font-size: 24px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  margin: 10px; /* Espaçamento entre os botões */
+}
 
+/* Efeito de hover nos botões */
+#audio-controls button:hover {
+  transform: scale(1.1);
+  background-color: #e6672d; /* Cor de fundo ao passar o mouse, igual ao efeito de hover */
+}
+
+/* Efeito de ativo nos botões */
+#audio-controls button:active {
+  transform: scale(0.90);
+  background-color: #e6672d; /* Cor de fundo ao clicar, igual ao efeito de ativo */
+}
+
+/* Estilo para botões desabilitados */
+#audio-controls button:disabled {
+  background-color: #d6d6d6; /* Cor de fundo para botões desabilitados */
+  color: #888888; /* Cor do texto para botões desabilitados */
+  cursor: not-allowed; /* Cursor de não permitido */
 }
