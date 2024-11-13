@@ -44,6 +44,12 @@ body {
   font-family: 'OpenDyslexicMono', "Hammersmith One", sans-serif;
   font-size: 20px;
   background-color: #F0F7F4;
+
+  background-image: url('../uploads/Noise & Texture.png');
+  background-size: cover; /* Ajusta o tamanho da textura para cobrir toda a área */
+  background-repeat: no-repeat; /* Evita repetição da textura */
+  background-attachment: fixed; /* Mantém a textura fixa durante o scroll */
+
 }
 
 h2 {
