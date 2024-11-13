@@ -1,14 +1,18 @@
 /* Importa a fonte OpenDyslexic */
 @font-face {
   font-family: 'OpenDyslexic';
-  src: url('static/fonts/OpenDyslexicMono-Regular.otf') format('opentype');
+  src: url('static/fonts/OpenDyslexicMono-Regular.otf') format('opentype'),
+      url('static/fonts/OpenFormatWoff/OpenDyslexicMono-Regular.woff') format('woff'),
+      url('static/fonts/OpenFormatWoff/OpenDyslexicMono-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 /* Fonte em Negrito */
 @font-face {
   font-family: 'OpenDyslexic';
-  src: url('static/fonts/OpenDyslexic3-Bold.ttf') format('opentype');
+  src: url('static/fonts/OpenDyslexic3-Bold.ttf') format('opentype'),
+        url('static/fonts/OpenFormatWoff/OpenDyslexicThree-Bold.woff') format('woff'),
+        url('static/fonts/OpenFormatWoff/OpenDyslexicThree-Bold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
 }
