@@ -80,14 +80,16 @@ span{
   font-size: 24px;
 }
 
-button{
-  color: white;
-  padding: 15px 30px;
-  border-radius: 20px;
-  font-family: "Hammersmith One", sans-serif;
-  text-transform: uppercase;
-  cursor: pointer;
-}
+/*button{*/
+/*  color: white;*/
+/*  padding: 15px 30px;*/
+/*  border-radius: 20px;*/
+/*  font-family: "Hammersmith One", sans-serif;*/
+/*  text-transform: uppercase;*/
+/*  cursor: pointer;*/
+/*}*/
+
+
 /* logo */
 .logo {
   display: flex;
@@ -130,7 +132,7 @@ a:hover {
 
 /* HEADER */
 
-header {
+.navbar-header {
   position: relative;
   margin: 0px 0px 80px 0px;
 }
@@ -295,6 +297,12 @@ input:checked + .slider:before {
   gap: 16px;
 }
 
+#h2-about-info{
+  margin: 30px auto 20px auto; /* Espaçamento acima e abaixo */
+  padding: 0 50px; /* Segue o padding das seções para alinhar */
+  text-align: center;
+}
+
 /*BOTAO UPLOAD INDEX*/
 
 #botao-upload{
@@ -326,13 +334,16 @@ input:checked + .slider:before {
 /*BOTAO GITHUB ABOUT*/
 
 #botao-github{
-  background-color:#A8D5E2;
-  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   padding: 20px;
   border: 20px;
-  margin: 30px;
-  width: 500px;
-  height: 90px;
+  margin: 30px auto 0 auto;
+  width: 600px;
+  border-radius: 20px;
+  background-color:#A8D5E2;
+  height: 80px;
   transition: transform 0.3s ease;
   }
 
@@ -342,6 +353,7 @@ input:checked + .slider:before {
 #botao-github a {
   color: black;
   text-decoration: none;
+  text-align: center;
 }
 
 #botao-github:hover {
@@ -376,11 +388,18 @@ input:checked + .slider:before {
     color: #ff6600;
 }
 
+.high-contrast #botao-github {
+    color: #090909;
+}
+
 /* Media query para telas pequenas (smartphones) */
 @media (max-width: 600px) {
-  #botao-upload {
-    width: 90%; /* Botão ocupará quase toda a largura da tela */
+  #botao-upload, #botao-github{
+    width: 90%;/* Botão ocupará quase toda a largura da tela */
     padding: 15px;
+    flex-direction: column; /* Texto e imagem em pilha */
+    gap: 8px; /* Espaço menor entre imagem e texto */
+    height: auto; /* Ajusta a altura automaticamente */
   }
 
 
