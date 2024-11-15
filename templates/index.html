@@ -27,7 +27,6 @@
     </div>
     <p id="status">Status: Nenhum áudio carregado</p>
 
-    <!-- Elemento de áudio para tocar, usando o caminho dinâmico -->
     {% if audio_file %}
     <audio id="audio-player" src="{{ url_for('static', filename=audio_file.split('uploads/',1)[1]) }}" preload="auto"></audio>
     {% endif %}

@@ -17,10 +17,8 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 load_dotenv()
 
-# Inicializando o mixer do Pygame
 pygame.mixer.init()
 audio_file = None
-
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
@@ -41,12 +39,10 @@ def index():
                 pytesseract.pytesseract.tesseract_cmd = os.getenv("CAMINHO")
                 texto = pytesseract.image_to_string(imagem, lang="por")
 
-                # Gerar áudio do texto extraído
                 tts = gTTS(text=texto, lang='pt')
                 audio_file = os.path.join(app.config['UPLOAD_FOLDER'], f"audio_{datetime.now().strftime('%Y%m%d_%H%M%S')}.mp3")
                 tts.save(audio_file)
 
-                # Carregar o áudio no Pygame
                 pygame.mixer.music.load(audio_file)
 
                 return render_template("index.html", success="Arquivo processado com sucesso!")
@@ -60,7 +56,6 @@ def index():
 @app.route('/about')
 def about():
     return render_template('about.html')
-
 
 @app.route("/audio/control", methods=['POST'])
 def audio_control():

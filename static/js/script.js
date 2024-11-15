@@ -53,9 +53,10 @@ toggleSwitch.addEventListener('change', () => {
 // Verifica se a configuração de alto contraste foi salva anteriormente
 if (localStorage.getItem('high-contrast') === 'enabled') {
     body.classList.add('high-contrast');
-    toggleSwitch.checked = true; // Marca o checkbox como ativo
+    toggleSwitch.checked = true;
 }
 
+// Lógica de controlar o aúdio
 function sendCommand(command) {
     fetch("/audio/control", {
         method: "POST",
@@ -76,7 +77,6 @@ document.getElementById("play-btn").addEventListener("click", function () {
     document.getElementById("pause-btn").disabled = false;
     document.getElementById("stop-btn").disabled = false;
 
-    // Atualiza o status para "Áudio carregado" ao começar a reprodução
     updateStatus("Áudio carregado, reproduzindo...");
 });
 
@@ -84,7 +84,6 @@ document.getElementById("pause-btn").addEventListener("click", function () {
     sendCommand("pause");
     document.getElementById("unpause-btn").disabled = false;
 
-    // Atualiza o status para "Pausado"
     updateStatus("Pausado");
 });
 
@@ -92,7 +91,6 @@ document.getElementById("unpause-btn").addEventListener("click", function () {
     sendCommand("unpause");
     document.getElementById("unpause-btn").disabled = true;
 
-    // Atualiza o status para "Continuando"
     updateStatus("Continuando...");
 });
 
@@ -102,17 +100,5 @@ document.getElementById("stop-btn").addEventListener("click", function () {
     document.getElementById("unpause-btn").disabled = true;
     document.getElementById("stop-btn").disabled = true;
 
-    // Atualiza o status para "Parado"
     updateStatus("Áudio parado");
 });
-
-// Função para detectar quando o áudio terminar e atualizar o status
-function onAudioEnd() {
-    updateStatus("Áudio finalizado");
-}
-
-// Suponha que você tenha um elemento de áudio, como <audio id="audio-player">
-const audioPlayer = document.getElementById("audio-player");
-
-// Verifica se o áudio terminou e atualiza o status
-audioPlayer.addEventListener("ended", onAudioEnd);
