@@ -56,6 +56,7 @@ def play_audio(audio_file):
 # Rota principal
 @app.route("/", endpoint='index', methods=['GET', 'POST'])
 def index():
+
     if request.method == 'POST':
         file = request.files.get('file')
 
@@ -76,6 +77,7 @@ def index():
             return render_template("index.html", error="Nenhum arquivo foi selecionado")
     else:
         return render_template("index.html")
+
 
 # Rota 'sobre nós'
 @app.route("/about")

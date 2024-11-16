@@ -162,7 +162,8 @@ a:hover {
 }
 
 .navbar .links a {
-  letter-spacing: 1px;
+  letter-spacing: -3px;
+  word-spacing: -12px;
 }
 
 .navbar .hamburguer {
@@ -297,7 +298,7 @@ input:checked + .slider:before {
   gap: 16px;
 }
 
-#h2-about-info{
+#h2-about-info, #h2-home{
   margin: 30px auto 20px auto; /* Espaçamento acima e abaixo */
   padding: 0 50px; /* Segue o padding das seções para alinhar */
   text-align: center;
@@ -342,7 +343,7 @@ input:checked + .slider:before {
   margin: 30px auto 0 auto;
   width: 600px;
   border-radius: 20px;
-  background-color:#A8D5E2;
+  background-color:rgba(133, 205, 174, 0.80);
   height: 80px;
   transition: transform 0.3s ease;
   }
@@ -351,7 +352,7 @@ input:checked + .slider:before {
   margin-right: 8px;
 }
 #botao-github a {
-  color: black;
+  color: black; /*todo: modificar cor do fonte*/
   text-decoration: none;
   text-align: center;
 }
@@ -362,7 +363,7 @@ input:checked + .slider:before {
 
 #botao-github:active {
   transform: scale(0.90);
-  background-color: #498CA0;
+  background-color: rgba(133, 205, 174, 0.50);;
 }
 
 
@@ -389,7 +390,10 @@ input:checked + .slider:before {
 }
 
 .high-contrast #botao-github {
-    color: #090909;
+    color: white;
+}
+#botao-github img{
+  color: white;
 }
 
 /* Media query para telas pequenas (smartphones) */
