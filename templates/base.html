@@ -21,7 +21,7 @@
   <header id="navbar-header">
     <nav class="navbar">
       <div class="logo">
-        <img src="{{ url_for('static', filename='uploads/logo.svg') }}" alt="Logo Echotext">
+        <img src="{{ url_for('static', filename='uploads/logo.svg') }}" alt="Logo Echotext, um projeto de acessibilidade">
         <span>EchoText</span>
       </div>
 
@@ -39,13 +39,15 @@
         </label>
       </div>
 
-      <div class="hamburguer">
+      <div class="hamburguer" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="dropdown-menu" >
         <i class="fa-solid fa-bars"></i>
       </div>
 
-      <div class="dropdown-menu">
-        <li><a href="{{ url_for('index') }}">Página Inicial</a></li>
-        <li><a href="{{ url_for('about') }}">Sobre Nós</a></li>
+      <div class="dropdown-menu" role="menu">
+        <ul>
+          <li role="menuitem"><a href="{{ url_for('index') }}">Página Inicial</a></li>
+          <li role="menuitem"><a href="{{ url_for('about') }}">Sobre Nós</a></li>
+        </ul>
       </div>
     </nav>
   </header>
