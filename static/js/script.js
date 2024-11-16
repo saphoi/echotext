@@ -3,10 +3,15 @@ const hamburguer = document.querySelector('.hamburguer');
 const hamburguerIcon = document.querySelector('.hamburguer i');
 const dropDownMenu = document.querySelector('.dropdown-menu');
 
+hamburguer.setAttribute('aria-expanded', 'false');
+
 hamburguer.addEventListener('click', function () {
   dropDownMenu.classList.toggle('open');
   const isOpen = dropDownMenu.classList.contains('open');
-  
+
+  //Atualiza o atributo aria-expanded com base no estado do menu
+  hamburguer.setAttribute('aria-expanded', isOpen);
+
   // Alterna entre o ícone de barras e o X
   if (isOpen) {
     hamburguerIcon.classList.remove('fa-bars');
