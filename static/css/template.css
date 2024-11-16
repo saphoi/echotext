@@ -1,3 +1,24 @@
+/* Importa a fonte OpenDyslexic */
+@font-face {
+  font-family: 'OpenDyslexicMono';
+  src: url('../fonts/OpenDyslexicMono-Regular.otf') format('opentype'),
+      url('../fonts/OpenDyslexicMono-Regular.woff') format('woff'),
+      url('../fonts/OpenDyslexicMono-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/* Fonte em Negrito */
+@font-face {
+  font-family: 'OpenDyslexic3';
+  src: url('../fonts/OpenDyslexic3-Bold.ttf') format('opentype'),
+        url('../fonts/OpenDyslexicThree-Bold.woff') format('woff'),
+        url('../fonts/OpenDyslexicThree-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -20,14 +41,37 @@ html {
 }
 
 body {
-  font-family: "Hammersmith One", sans-serif;
-  font-size: 24px;
+  font-family: 'OpenDyslexicMono', "Hammersmith One", sans-serif;
+  font-size: 20px;
   background-color: #F0F7F4;
+
+  background-image: url('../uploads/Noise & Texture.png');
+  background-size: cover; /* Ajusta o tamanho da textura para cobrir toda a área */
+  background-repeat: no-repeat; /* Evita repetição da textura */
+  background-attachment: fixed; /* Mantém a textura fixa durante o scroll */
+
+  overflow-x: hidden; /* Impede o scroll lateral */
+
+}
+
+/* Sobreposição para escurecer e suavizar a textura em alto contraste */
+body.high-contrast::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%; /* Garante que a pseudo-classe cubra toda a altura da tela */
+  background-color: rgba(0, 0, 0, 0.5); /* Sobreposição preta */
+  z-index: -1; /* Coloca a sobreposição atrás do conteúdo */
+  backdrop-filter: brightness(0.7); /* Suaviza a textura */
+  /*pointer-events: none;*/
 }
 
 h2 {
-  font-family: "Roboto Mono", monospace;
-  font-size: 45px;
+  font-family: 'OpenDyslexic3', "Roboto Mono", monospace;
+  font-weight: bold;
+  font-size: 35px;
   color: #f47b46;
   text-transform: initial;
 }
@@ -36,14 +80,16 @@ span{
   font-size: 24px;
 }
 
-button{
-  color: white;
-  padding: 15px 30px;
-  border-radius: 20px;
-  font-family: "Hammersmith One", sans-serif;
-  text-transform: uppercase;
-  cursor: pointer;
-}
+/*button{*/
+/*  color: white;*/
+/*  padding: 15px 30px;*/
+/*  border-radius: 20px;*/
+/*  font-family: "Hammersmith One", sans-serif;*/
+/*  text-transform: uppercase;*/
+/*  cursor: pointer;*/
+/*}*/
+
+
 /* logo */
 .logo {
   display: flex;
@@ -86,7 +132,7 @@ a:hover {
 
 /* HEADER */
 
-header {
+.navbar-header {
   position: relative;
   margin: 0px 0px 80px 0px;
 }
@@ -112,7 +158,12 @@ header {
 
 .navbar .links {
   display: flex;
-  gap: 56px;
+  gap: 46px;
+}
+
+.navbar .links a {
+  letter-spacing: -3px;
+  word-spacing: -12px;
 }
 
 .navbar .hamburguer {
@@ -131,7 +182,7 @@ header {
 }
 .toggle-switch span {
   text-transform: capitalize;
-  font-size: 28px;
+  font-size: 20px;
 }
 
 .switch {
@@ -247,6 +298,12 @@ input:checked + .slider:before {
   gap: 16px;
 }
 
+#h2-about-info, #h2-home{
+  margin: 30px auto 20px auto; /* Espaçamento acima e abaixo */
+  padding: 0 50px; /* Segue o padding das seções para alinhar */
+  text-align: center;
+}
+
 /*BOTAO UPLOAD INDEX*/
 
 #botao-upload{
@@ -278,13 +335,16 @@ input:checked + .slider:before {
 /*BOTAO GITHUB ABOUT*/
 
 #botao-github{
-  background-color:#A8D5E2;
-  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   padding: 20px;
   border: 20px;
-  margin: 30px;
-  width: 500px;
-  height: 90px;
+  margin: 30px auto 0 auto;
+  width: 600px;
+  border-radius: 20px;
+  background-color:rgba(133, 205, 174, 0.80);
+  height: 80px;
   transition: transform 0.3s ease;
   }
 
@@ -292,8 +352,9 @@ input:checked + .slider:before {
   margin-right: 8px;
 }
 #botao-github a {
-  color: black;
+  color: black; /*todo: modificar cor do fonte*/
   text-decoration: none;
+  text-align: center;
 }
 
 #botao-github:hover {
@@ -302,11 +363,16 @@ input:checked + .slider:before {
 
 #botao-github:active {
   transform: scale(0.90);
-  background-color: #498CA0;
+  background-color: rgba(133, 205, 174, 0.50);;
 }
 
 
 /* Estilo de alto contraste */
+
+.high-contrast * {
+  transition: background-color 0.3s, color 0.3s;
+}
+
 .high-contrast{
     background-color: #090909;
     color: #FFF;
@@ -323,12 +389,25 @@ input:checked + .slider:before {
     color: #ff6600;
 }
 
+.high-contrast #botao-github {
+    color: white;
+}
+#botao-github img{
+  color: white;
+}
+
 /* Media query para telas pequenas (smartphones) */
 @media (max-width: 600px) {
-  #botao-upload {
-    width: 90%; /* Botão ocupará quase toda a largura da tela */
+  #botao-upload, #botao-github{
+    width: 90%;/* Botão ocupará quase toda a largura da tela */
     padding: 15px;
-  }}
+    flex-direction: column; /* Texto e imagem em pilha */
+    gap: 8px; /* Espaço menor entre imagem e texto */
+    height: auto; /* Ajusta a altura automaticamente */
+  }
+
+
+}
 
  /* Estilo para os botões de controle de áudio */
 #audio-controls button {

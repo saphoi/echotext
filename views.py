@@ -3,6 +3,8 @@ from datetime import datetime
 from dotenv import load_dotenv
 from flask import render_template, request, jsonify
 from gtts import gTTS
+import pytesseract
+import cv2
 import pygame
 import pytesseract
 import cv2
@@ -15,6 +17,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+# Carrega as variáveis de ambiente
 load_dotenv()
 
 pygame.mixer.init()
