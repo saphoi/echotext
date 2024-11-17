@@ -58,5 +58,52 @@ toggleSwitch.addEventListener('change', () => {
 // Verifica se a configuração de alto contraste foi salva anteriormente
 if (localStorage.getItem('high-contrast') === 'enabled') {
     body.classList.add('high-contrast');
-    toggleSwitch.checked = true; // Marca o checkbox como ativo
+    toggleSwitch.checked = true;
 }
+
+// Lógica de controlar o aúdio
+function sendCommand(command) {
+    fetch("/audio/control", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ command })
+    })
+    .then(response => response.json())
+    .then(data => updateStatus(data.status || data.error))
+    .catch(err => console.error(err));
+}
+
+function updateStatus(status) {
+    document.getElementById("status").textContent = `Status: ${status}`;
+}
+
+document.getElementById("play-btn").addEventListener("click", function () {
+    sendCommand("play");
+    document.getElementById("pause-btn").disabled = false;
+    document.getElementById("stop-btn").disabled = false;
+
+    updateStatus("Áudio carregado, reproduzindo...");
+});
+
+document.getElementById("pause-btn").addEventListener("click", function () {
+    sendCommand("pause");
+    document.getElementById("unpause-btn").disabled = false;
+
+    updateStatus("Pausado");
+});
+
+document.getElementById("unpause-btn").addEventListener("click", function () {
+    sendCommand("unpause");
+    document.getElementById("unpause-btn").disabled = true;
+
+    updateStatus("Continuando...");
+});
+
+document.getElementById("stop-btn").addEventListener("click", function () {
+    sendCommand("stop");
+    document.getElementById("pause-btn").disabled = true;
+    document.getElementById("unpause-btn").disabled = true;
+    document.getElementById("stop-btn").disabled = true;
+
+    updateStatus("Áudio parado");
+});

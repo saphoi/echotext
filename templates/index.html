@@ -19,6 +19,19 @@
         SELECIONAR ARQUIVO
       </a>
     </form>
+
+    <div id="audio-controls">
+      <button id="play-btn">Play</button>
+      <button id="pause-btn" disabled>Pausar</button>
+      <button id="unpause-btn" disabled>Continuar</button>
+      <button id="stop-btn" disabled>Parar</button>
+    </div>
+    <p id="status">Status: Nenhum áudio carregado</p>
+
+    {% if audio_file %}
+    <audio id="audio-player" src="{{ url_for('static', filename=audio_file.split('uploads/',1)[1]) }}" preload="auto"></audio>
+    {% endif %}
   </div>
+</body>
 
 {% endblock %}
