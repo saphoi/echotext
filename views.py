@@ -31,30 +31,45 @@ def index():
         if request.method == 'POST':
             file = request.files.get('file')
 
-            if file and file.filename:
+            allowed_extensions = {'png', 'jpg', 'jpeg'}
+            if file and file.filename and file.filename.rsplit('.', 1)[1].lower() in allowed_extensions:
                 filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
                 file.save(filepath)
 
-                imagem = cv2.imread(filepath)
-                if imagem is None:
-                    raise Exception("Erro ao ler a imagem.")
+                try:
+                    imagem = cv2.imread(filepath)
+                    if imagem is None:
+                        raise ValueError("Imagem não pôde ser lida. Verifique o formato do arquivo.")
+                except cv2.error as e:
+                    return render_template("index.html", error="Erro ao processar a imagem.")
+                except ValueError as e:
+                    return render_template("index.html", error=str(e))
+                except Exception as e:
+                    return render_template("index.html", error="Erro desconhecido ao carregar a imagem.")
 
                 pytesseract.pytesseract.tesseract_cmd = os.getenv("CAMINHO")
                 texto = pytesseract.image_to_string(imagem, lang="por")
 
-                tts = gTTS(text=texto, lang='pt')
-                audio_file = os.path.join(app.config['UPLOAD_FOLDER'], f"audio_{datetime.now().strftime('%Y%m%d_%H%M%S')}.mp3")
-                tts.save(audio_file)
+                try:
+                    tts = gTTS(text=texto, lang='pt')
+                    audio_file = os.path.join(app.config['UPLOAD_FOLDER'], f"audio_{datetime.now().strftime('%Y%m%d_%H%M%S')}.mp3")
+                    tts.save(audio_file)
 
-                pygame.mixer.music.load(audio_file)
+                    pygame.mixer.music.load(audio_file)
+                except Exception as e:
+                    return render_template("index.html", error=f"Erro ao gerar ou reproduzir o áudio: {str(e)}")
 
                 return render_template("index.html", success="Arquivo processado com sucesso!")
             else:
-                return render_template("index.html", error="Nenhum arquivo foi selecionado.")
+                return render_template("index.html", error="Tipo de arquivo inválido. Envie uma imagem.")
         else:
             return render_template("index.html")
+    except FileNotFoundError as e:
+        return render_template("index.html", error="Arquivo não encontrado. Por favor, envie novamente.")
+    except cv2.error as e:
+        return render_template("index.html", error="Erro ao processar a imagem.")
     except Exception as e:
-        return render_template("index.html", error=f"Erro ao processar o arquivo: {str(e)}")
+        return render_template("index.html", error="Ocorreu um erro desconhecido. Tente novamente mais tarde.")
 
 @app.route('/about')
 def about():
