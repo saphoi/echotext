@@ -15,23 +15,21 @@
   <div class="conteudo-upload">
     <form method="POST" enctype="multipart/form-data">
       <input type="file" onchange="form.submit()" id="file" name="file" accept="image/png, image/jpg, image/jpeg" style="opacity: 0;" />
-      <a for="file" id="botao-upload" style="color: white;"><img src="{{ url_for('static', filename='uploads/FiFileText.svg') }}" alt="">
+      <label for="file" id="botao-upload" style="color: white;"><img src="{{ url_for('static', filename='uploads/FiFileText.svg') }}" alt="">
         SELECIONAR ARQUIVO
-      </a>
+      </label>
     </form>
-
-    <div id="audio-controls">
+            <div id="audio-controls">
       <button id="play-btn">Play</button>
       <button id="pause-btn" disabled>Pausar</button>
       <button id="unpause-btn" disabled>Continuar</button>
       <button id="stop-btn" disabled>Parar</button>
-    </div>
-    <p id="status">Status: Nenhum áudio carregado</p>
+     </div>
+        <p id="status">Status: Nenhum áudio carregado</p>
 
-    {% if audio_file %}
-    <audio id="audio-player" src="{{ url_for('static', filename=audio_file.split('uploads/',1)[1]) }}" preload="auto"></audio>
-    {% endif %}
+        {% if audio_file %}
+        <audio id="audio-player" src="{{ url_for('static', filename=audio_file.split('uploads/',1)[1]) }}" preload="auto"></audio>
+        {% endif %}
   </div>
-</body>
 
 {% endblock %}

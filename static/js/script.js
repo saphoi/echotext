@@ -24,18 +24,18 @@ hamburguer.addEventListener('click', function () {
 
 // SOBRE O CURSOR! NAO MEXEEEEE!
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Cria o elemento da bola
-  const cursor = document.createElement('div');
-  cursor.classList.add('cursor');
-  document.body.appendChild(cursor);
-
-  // Atualiza a posição da bola com base no movimento do mouse
-  document.addEventListener('mousemove', (e) => {
-    cursor.style.left = `${e.pageX}px`;
-    cursor.style.top = `${e.pageY}px`;
-  });
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   // Cria o elemento da bola
+//   const cursor = document.createElement('div');
+//   cursor.classList.add('cursor');
+//   document.body.appendChild(cursor);
+//
+//   // Atualiza a posição da bola com base no movimento do mouse
+//   document.addEventListener('mousemove', (e) => {
+//     cursor.style.left = `${e.pageX}px`;
+//     cursor.style.top = `${e.pageY}px`;
+//   });
+// });
 
 // SOBRE O ALTO CONTRASTE:
 
@@ -61,7 +61,7 @@ if (localStorage.getItem('high-contrast') === 'enabled') {
     toggleSwitch.checked = true;
 }
 
-// Lógica de controlar o aúdio
+// Lógica de controlar o aúdio - paula
 function sendCommand(command) {
     fetch("/audio/control", {
         method: "POST",
