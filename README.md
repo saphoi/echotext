@@ -2,6 +2,7 @@
 Projeto de DCEXT IV com foco em acessibilidade.
 
 # Passo a passo: como rodar o o echotext na sua máquina
+- pip install Flask
 - Instale o Tesseract OCR (incluir pt-br "por")
 - ⁠pip install pytesseract
 - pip install opencv-python

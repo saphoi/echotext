@@ -3,8 +3,6 @@ from datetime import datetime
 from dotenv import load_dotenv
 from flask import render_template, request, jsonify
 from gtts import gTTS
-import pytesseract
-import cv2
 import pygame
 import pytesseract
 import cv2
