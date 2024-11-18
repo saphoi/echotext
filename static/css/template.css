@@ -25,20 +25,20 @@
   box-sizing: border-box;
 }
 
-html {
-  cursor: none; /* Esconde o cursor padrão */
-}
+/*html {*/
+/*  cursor: none; !* Esconde o cursor padrão *!*/
+/*}*/
 
-.cursor {
-  position: fixed; /* Fixa a posição em relação à viewport */
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: rgba(133, 205, 174, 0.70);
-  pointer-events: none; /* Para que a bola não interfira em cliques */
-  transform: translate(-50%, -50%); /* Centraliza o círculo em relação ao mouse */
-  z-index: 9999; /* Garante que fique acima de outros elementos */
-}
+/*.cursor {*/
+/*  position: fixed; !* Fixa a posição em relação à viewport *!*/
+/*  width: 60px;*/
+/*  height: 60px;*/
+/*  border-radius: 50%;*/
+/*  background-color: rgba(133, 205, 174, 0.70);*/
+/*  pointer-events: none; !* Para que a bola não interfira em cliques *!*/
+/*  transform: translate(-50%, -50%); !* Centraliza o círculo em relação ao mouse *!*/
+/*  z-index: 9999; !* Garante que fique acima de outros elementos *!*/
+/*}*/
 
 body {
   font-family: 'OpenDyslexicMono', "Hammersmith One", sans-serif;
@@ -264,6 +264,7 @@ input:checked + .slider:before {
   color: white;
 }
 
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 992px) {
 
@@ -282,6 +283,12 @@ input:checked + .slider:before {
   .dropdown-menu.open {
     display: block;
   }
+
+  .hamburguer.open span {
+  transform: rotate(45deg);
+  background-color: #ff6600;
+  }
+
 }
 
 
@@ -398,7 +405,7 @@ input:checked + .slider:before {
 
 /* Media query para telas pequenas (smartphones) */
 @media (max-width: 600px) {
-  #botao-upload, #botao-github{
+  #botao-upload, #botao-github, #audio-controls{
     width: 90%;/* Botão ocupará quase toda a largura da tela */
     padding: 15px;
     flex-direction: column; /* Texto e imagem em pilha */
